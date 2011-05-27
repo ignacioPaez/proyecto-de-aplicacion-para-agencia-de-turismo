@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27/05/2011 17:03:33 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="agencia.entity.Cliente" table="Cliente" catalog="Agencia de Turismo DB">
+        <id name="idCliente" type="int">
+            <column name="idCliente" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" length="45" />
+        </property>
+        <property name="usuario" type="string">
+            <column name="usuario" length="45" />
+        </property>
+        <property name="pass" type="string">
+            <column name="pass" length="45" />
+        </property>
+        <property name="fechaNaciemiento" type="date">
+            <column name="fechaNaciemiento" length="10" />
+        </property>
+        <property name="nacionalidad" type="string">
+            <column name="nacionalidad" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>
