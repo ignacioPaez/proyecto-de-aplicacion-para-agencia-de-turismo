@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27/05/2011 17:03:33 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="agencia.entity.Proveedor" table="Proveedor" catalog="Agencia de Turismo DB">
+        <id name="idProveedor" type="int">
+            <column name="idProveedor" />
+            <generator class="assigned" />
+        </id>
+        <property name="razonSocial" type="string">
+            <column name="razonSocial" length="45" />
+        </property>
+        <property name="usuairo" type="string">
+            <column name="usuairo" length="45" />
+        </property>
+        <property name="pass" type="string">
+            <column name="pass" length="45" />
+        </property>
+        <set name="servicios" inverse="true">
+            <key>
+                <column name="Proveedor_idProveedor" not-null="true" />
+            </key>
+            <one-to-many class="agencia.entity.Servicio" />
+        </set>
+    </class>
+</hibernate-mapping>
