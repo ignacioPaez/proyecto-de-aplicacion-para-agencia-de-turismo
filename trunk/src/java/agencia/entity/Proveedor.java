@@ -1,5 +1,5 @@
 package agencia.entity;
-// Generated 27/05/2011 17:03:33 by Hibernate Tools 3.2.1.GA
+// Generated 04/06/2011 18:38:36 by Hibernate Tools 3.2.1.GA
 
 
 import java.util.HashSet;
@@ -13,7 +13,7 @@ public class Proveedor  implements java.io.Serializable {
 
      private int idProveedor;
      private String razonSocial;
-     private String usuairo;
+     private String usuario;
      private String pass;
      private Set<Servicio> servicios = new HashSet<Servicio>(0);
 
@@ -27,7 +27,7 @@ public class Proveedor  implements java.io.Serializable {
     public Proveedor(int idProveedor, String razonSocial, String usuairo, String pass, Set<Servicio> servicios) {
        this.idProveedor = idProveedor;
        this.razonSocial = razonSocial;
-       this.usuairo = usuairo;
+       this.usuario = usuairo;
        this.pass = pass;
        this.servicios = servicios;
     }
@@ -46,12 +46,12 @@ public class Proveedor  implements java.io.Serializable {
     public void setRazonSocial(String razonSocial) {
         this.razonSocial = razonSocial;
     }
-    public String getUsuairo() {
-        return this.usuairo;
+    public String getUsuario() {
+        return this.usuario;
     }
     
-    public void setUsuairo(String usuairo) {
-        this.usuairo = usuairo;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
     public String getPass() {
         return this.pass;

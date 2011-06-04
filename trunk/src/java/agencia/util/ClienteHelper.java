@@ -4,6 +4,7 @@
  */
 package agencia.util;
 
+import agencia.entity.Cliente;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -19,18 +20,16 @@ public class ClienteHelper {
         this.session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
     
-    public Boolean logCliente(String user, String pass){
-        Boolean resultado=false;
+    public Boolean logCliente(String usuario, String pass){
+        Cliente logueado = new Cliente();
         try{
             org.hibernate.Transaction tx = session.beginTransaction();
-            Query q = session.createQuery("from Cliente as cliente where cliente.usuario='"+user+"'");
-            if (pass==(String)q.uniqueResult()){
-                resultado = true;
-            }
+            Query q = session.createQuery("from Cliente cliente where cliente.usuario='"+usuario+"'");
+            logueado = (Cliente)q.uniqueResult();            
         }catch (Exception e){
             e.printStackTrace();
         }
-        return resultado;
+        return (logueado.getPass().equals(pass));
     }
     
 }
