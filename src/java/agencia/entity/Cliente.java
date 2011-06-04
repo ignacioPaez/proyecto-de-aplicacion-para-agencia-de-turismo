@@ -15,7 +15,7 @@ public class Cliente  implements java.io.Serializable {
      private String apellido;
      private String usuario;
      private String pass;
-     private Date fechaNaciemiento;
+     private Date fechaNacimiento;
      private String nacionalidad;
 
     public Cliente() {
@@ -31,7 +31,7 @@ public class Cliente  implements java.io.Serializable {
        this.apellido = apellido;
        this.usuario = usuario;
        this.pass = pass;
-       this.fechaNaciemiento = fechaNaciemiento;
+       this.fechaNacimiento = fechaNaciemiento;
        this.nacionalidad = nacionalidad;
     }
    
@@ -71,11 +71,11 @@ public class Cliente  implements java.io.Serializable {
         this.pass = pass;
     }
     public Date getFechaNaciemiento() {
-        return this.fechaNaciemiento;
+        return this.fechaNacimiento;
     }
     
     public void setFechaNaciemiento(Date fechaNaciemiento) {
-        this.fechaNaciemiento = fechaNaciemiento;
+        this.fechaNacimiento = fechaNaciemiento;
     }
     public String getNacionalidad() {
         return this.nacionalidad;
