@@ -1,5 +1,5 @@
 package agencia.entity;
-// Generated 27/05/2011 17:03:33 by Hibernate Tools 3.2.1.GA
+// Generated 04/06/2011 18:38:36 by Hibernate Tools 3.2.1.GA
 
 
 

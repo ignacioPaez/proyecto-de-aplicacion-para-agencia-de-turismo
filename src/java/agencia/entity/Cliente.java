@@ -1,5 +1,5 @@
 package agencia.entity;
-// Generated 27/05/2011 17:03:33 by Hibernate Tools 3.2.1.GA
+// Generated 04/06/2011 18:38:36 by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -70,12 +70,12 @@ public class Cliente  implements java.io.Serializable {
     public void setPass(String pass) {
         this.pass = pass;
     }
-    public Date getFechaNaciemiento() {
+    public Date getFechaNacimiento() {
         return this.fechaNacimiento;
     }
     
-    public void setFechaNaciemiento(Date fechaNaciemiento) {
-        this.fechaNacimiento = fechaNaciemiento;
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
     public String getNacionalidad() {
         return this.nacionalidad;
