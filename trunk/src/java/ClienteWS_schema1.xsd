@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema version="1.0" targetNamespace="http://util.agencia/" xmlns:tns="http://util.agencia/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-  <xs:element name="listarClientes" type="tns:listarClientes"/>
+  <xs:element name="listarClientes" nillable="true" type="tns:listarClientes"/>
 
-  <xs:element name="listarClientesResponse" type="tns:listarClientesResponse"/>
+  <xs:element name="listarClientesResponse" nillable="true" type="tns:listarClientesResponse"/>
 
-  <xs:element name="logCliente" type="tns:logCliente"/>
+  <xs:element name="logCliente" nillable="true" type="tns:logCliente"/>
 
-  <xs:element name="logClienteResponse" type="tns:logClienteResponse"/>
+  <xs:element name="logClienteResponse" nillable="true" type="tns:logClienteResponse"/>
 
   <xs:complexType name="logCliente">
     <xs:sequence>
-      <xs:element name="user" type="xs:string" minOccurs="0"/>
       <xs:element name="pass" type="xs:string" minOccurs="0"/>
+      <xs:element name="user" type="xs:string" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -28,7 +28,7 @@
 
   <xs:complexType name="listarClientesResponse">
     <xs:sequence>
-      <xs:element name="return" type="xs:anyType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="return" type="xs:int"/>
     </xs:sequence>
   </xs:complexType>
 </xs:schema>
