@@ -12,15 +12,34 @@
   <message name="logClienteResponse">
     <part name="parameters" element="tns:logClienteResponse"/>
   </message>
+  <message name="listarClientes">
+    <part name="parameters" element="tns:listarClientes"/>
+  </message>
+  <message name="listarClientesResponse">
+    <part name="parameters" element="tns:listarClientesResponse"/>
+  </message>
   <portType name="ClienteWS">
     <operation name="logCliente">
       <input wsam:Action="http://util.agencia/ClienteWS/logClienteRequest" message="tns:logCliente"/>
       <output wsam:Action="http://util.agencia/ClienteWS/logClienteResponse" message="tns:logClienteResponse"/>
     </operation>
+    <operation name="listarClientes">
+      <input wsam:Action="http://util.agencia/ClienteWS/listarClientesRequest" message="tns:listarClientes"/>
+      <output wsam:Action="http://util.agencia/ClienteWS/listarClientesResponse" message="tns:listarClientesResponse"/>
+    </operation>
   </portType>
   <binding name="ClienteWSPortBinding" type="tns:ClienteWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
     <operation name="logCliente">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="listarClientes">
       <soap:operation soapAction=""/>
       <input>
         <soap:body use="literal"/>
