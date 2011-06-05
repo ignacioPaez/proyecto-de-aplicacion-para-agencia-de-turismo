@@ -4,6 +4,7 @@
  */
 package agencia.util;
 
+import agencia.entity.Cliente;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -24,7 +25,7 @@ public class ClienteWS {
     }
     
     @WebMethod(operationName = "listarClientes")
-    public List listarClientes() {
+    public List<Cliente> listarClientes() {
         ClienteHelper ch = new ClienteHelper();
         return ch.listarClientes();
     }

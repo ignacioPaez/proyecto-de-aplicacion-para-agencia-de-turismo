@@ -24,6 +24,7 @@ public class ClienteHelper {
     
     public Boolean logCliente(String usuario, String pass){
         Cliente logueado = new Cliente();
+        Boolean respuesta = false;
         try{
             org.hibernate.Transaction tx = session.beginTransaction();
             Query q = session.createQuery("from Cliente cliente where cliente.usuario='"+usuario+"'");
@@ -31,7 +32,10 @@ public class ClienteHelper {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return (logueado.getPass().equals(pass));       
+        if(logueado!=null){
+            respuesta = (logueado.getPass().equals(pass));
+        }       
+        return respuesta;
     }
     
     public List<Cliente> listarClientes(){
@@ -39,7 +43,7 @@ public class ClienteHelper {
         try{
             org.hibernate.Transaction tx = session.beginTransaction();
             Query q = session.createQuery("from Cliente");
-            listaClientes = q.list();            
+            listaClientes = q.list();
         }catch(Exception e){
             e.printStackTrace();
         }
