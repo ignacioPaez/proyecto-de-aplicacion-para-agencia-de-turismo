@@ -5,8 +5,10 @@
 package agencia.util;
 
 import agencia.entity.Cliente;
+import java.util.Iterator;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import java.util.List;
 
 /**
  *
@@ -29,7 +31,18 @@ public class ClienteHelper {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return (logueado.getPass().equals(pass));
+        return (logueado.getPass().equals(pass));       
     }
     
+    public List<Cliente> listarClientes(){
+        List<Cliente> listaClientes = null;
+        try{
+            org.hibernate.Transaction tx = session.beginTransaction();
+            Query q = session.createQuery("from Cliente");
+            listaClientes = q.list();            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return listaClientes;
+    }
 }
