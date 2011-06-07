@@ -53,9 +53,38 @@ public class ClienteHelper {
     public void guardarCliente(Cliente cliente){
         try{
             org.hibernate.Transaction tx = session.beginTransaction();
-            session.save(cliente);
+            session.persist(cliente);
+            session.getTransaction().commit();
+        }catch(Exception e){
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }finally{
+            session.close();
+        }
+    }
+    
+    public void eliminarCliente(int idCliente){
+        try{
+            org.hibernate.Transaction tx = session.beginTransaction();
+            Query q = session.createQuery("from Cliente cliente where cliente.idCliente='"+idCliente+"'");
+            session.delete(q.uniqueResult());
+            session.getTransaction().commit();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            session.close();
+        }
+    }
+    
+    public Cliente obtenerCliente(int idCliente){
+        Cliente cliente= null;
+        try{
+            org.hibernate.Transaction tx = session.getTransaction();
+            Query q = session.createQuery("from Cliente cliente where cliente.idCliente='"+idCliente+"'");
+            cliente = (Cliente) q.uniqueResult();
         }catch(Exception e){
             e.printStackTrace();
         }
+        return cliente;
     }
 }

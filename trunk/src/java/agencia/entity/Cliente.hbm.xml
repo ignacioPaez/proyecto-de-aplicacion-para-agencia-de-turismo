@@ -6,7 +6,7 @@
     <class name="agencia.entity.Cliente" table="Cliente" catalog="Agencia_de_Turismo_DB">
         <id name="idCliente" type="int">
             <column name="idCliente" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
         <property name="nombre" type="string">
             <column name="nombre" length="45" />
