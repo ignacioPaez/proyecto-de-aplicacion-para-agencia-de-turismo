@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema version="1.0" targetNamespace="http://util.agencia/" xmlns:tns="http://util.agencia/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-  <xs:element name="guardarCliente" type="tns:guardarCliente"/>
+  <xs:element name="eliminarCliente" type="tns:eliminarCliente"/>
 
-  <xs:element name="guardarClienteResponse" type="tns:guardarClienteResponse"/>
+  <xs:element name="eliminarClienteResponse" type="tns:eliminarClienteResponse"/>
+
+  <xs:element name="guardarCliente" nillable="true" type="tns:guardarCliente"/>
+
+  <xs:element name="guardarClienteResponse" nillable="true" type="tns:guardarClienteResponse"/>
 
   <xs:element name="listarClientes" nillable="true" type="tns:listarClientes"/>
 
@@ -12,6 +16,10 @@
   <xs:element name="logCliente" nillable="true" type="tns:logCliente"/>
 
   <xs:element name="logClienteResponse" nillable="true" type="tns:logClienteResponse"/>
+
+  <xs:element name="obtenerCliente" type="tns:obtenerCliente"/>
+
+  <xs:element name="obtenerClienteResponse" type="tns:obtenerClienteResponse"/>
 
   <xs:complexType name="logCliente">
     <xs:sequence>
@@ -26,13 +34,15 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="listarClientes">
-    <xs:sequence/>
+  <xs:complexType name="obtenerCliente">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="listarClientesResponse">
+  <xs:complexType name="obtenerClienteResponse">
     <xs:sequence>
-      <xs:element name="return" type="tns:cliente" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="return" type="tns:cliente" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -45,6 +55,26 @@
       <xs:element name="nombre" type="xs:string" minOccurs="0"/>
       <xs:element name="pass" type="xs:string" minOccurs="0"/>
       <xs:element name="usuario" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="eliminarCliente">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="eliminarClienteResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="listarClientes">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="listarClientesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:cliente" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
