@@ -18,6 +18,12 @@
   <message name="listarClientesResponse">
     <part name="parameters" element="tns:listarClientesResponse"/>
   </message>
+  <message name="guardarCliente">
+    <part name="parameters" element="tns:guardarCliente"/>
+  </message>
+  <message name="guardarClienteResponse">
+    <part name="parameters" element="tns:guardarClienteResponse"/>
+  </message>
   <portType name="ClienteWS">
     <operation name="logCliente">
       <input wsam:Action="http://util.agencia/ClienteWS/logClienteRequest" message="tns:logCliente"/>
@@ -26,6 +32,10 @@
     <operation name="listarClientes">
       <input wsam:Action="http://util.agencia/ClienteWS/listarClientesRequest" message="tns:listarClientes"/>
       <output wsam:Action="http://util.agencia/ClienteWS/listarClientesResponse" message="tns:listarClientesResponse"/>
+    </operation>
+    <operation name="guardarCliente">
+      <input wsam:Action="http://util.agencia/ClienteWS/guardarClienteRequest" message="tns:guardarCliente"/>
+      <output wsam:Action="http://util.agencia/ClienteWS/guardarClienteResponse" message="tns:guardarClienteResponse"/>
     </operation>
   </portType>
   <binding name="ClienteWSPortBinding" type="tns:ClienteWS">
@@ -40,6 +50,15 @@
       </output>
     </operation>
     <operation name="listarClientes">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="guardarCliente">
       <soap:operation soapAction=""/>
       <input>
         <soap:body use="literal"/>
