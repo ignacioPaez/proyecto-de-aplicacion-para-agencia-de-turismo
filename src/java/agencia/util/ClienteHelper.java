@@ -49,4 +49,13 @@ public class ClienteHelper {
         }
         return listaClientes;
     }
+    
+    public void guardarCliente(Cliente cliente){
+        try{
+            org.hibernate.Transaction tx = session.beginTransaction();
+            session.save(cliente);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

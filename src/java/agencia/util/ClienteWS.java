@@ -5,6 +5,8 @@
 package agencia.util;
 
 import agencia.entity.Cliente;
+import java.util.Calendar;
+import java.util.Date;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -28,5 +30,11 @@ public class ClienteWS {
     public List<Cliente> listarClientes() {
         ClienteHelper ch = new ClienteHelper();
         return ch.listarClientes();
+    }
+    
+    @WebMethod(operationName = "guardarCliente")
+    public void guardarCliente(Cliente cliente) {
+        ClienteHelper ch = new ClienteHelper();
+        ch.guardarCliente(cliente);
     }
 }

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema version="1.0" targetNamespace="http://util.agencia/" xmlns:tns="http://util.agencia/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+  <xs:element name="guardarCliente" type="tns:guardarCliente"/>
+
+  <xs:element name="guardarClienteResponse" type="tns:guardarClienteResponse"/>
+
   <xs:element name="listarClientes" nillable="true" type="tns:listarClientes"/>
 
   <xs:element name="listarClientesResponse" nillable="true" type="tns:listarClientesResponse"/>
@@ -28,8 +32,30 @@
 
   <xs:complexType name="listarClientesResponse">
     <xs:sequence>
-      <xs:element name="return" type="xs:int"/>
+      <xs:element name="return" type="tns:cliente" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cliente">
+    <xs:sequence>
+      <xs:element name="apellido" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechaNacimiento" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="idCliente" type="xs:int"/>
+      <xs:element name="nacionalidad" type="xs:string" minOccurs="0"/>
+      <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="pass" type="xs:string" minOccurs="0"/>
+      <xs:element name="usuario" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="guardarCliente">
+    <xs:sequence>
+      <xs:element name="arg0" type="tns:cliente" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="guardarClienteResponse">
+    <xs:sequence/>
   </xs:complexType>
 </xs:schema>
 
