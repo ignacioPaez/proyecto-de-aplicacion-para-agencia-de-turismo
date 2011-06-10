@@ -52,7 +52,7 @@ public class Cliente  implements java.io.Serializable {
        this.facturas = facturas;
     }
    
-     @Id @GeneratedValue(strategy=TABLE)
+     @Id @GeneratedValue(strategy=IDENTITY)
     
     @Column(name="idCliente", unique=true, nullable=false)
     public Integer getIdCliente() {

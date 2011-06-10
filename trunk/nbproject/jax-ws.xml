@@ -4,6 +4,9 @@
     <service name="ClienteWS">
       <implementation-class>agencia.util.ClienteWS</implementation-class>
     </service>
+    <service name="ClientePesadoWS">
+      <implementation-class>agencia.util.ClientePesadoWS</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>
