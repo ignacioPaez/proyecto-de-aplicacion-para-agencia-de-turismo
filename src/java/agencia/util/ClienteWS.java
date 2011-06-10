@@ -5,6 +5,7 @@
 package agencia.util;
 
 import agencia.entity.Cliente;
+import agencia.entity.Proveedor;
 import java.util.Calendar;
 import java.util.Date;
 import javax.jws.WebService;
@@ -49,5 +50,24 @@ public class ClienteWS {
     public Cliente obtenerClientePorID(int idCliente){
         ClienteHelper ch = new ClienteHelper();
         return ch.obtenerClientePorID(idCliente);        
+    }
+    
+    @WebMethod(operationName = "listarProveedores")
+    public List<Proveedor> listarProveedores() {
+        ProveedorHelper ch = new ProveedorHelper();
+        return ch.listarProveedor();
+    }
+    
+    @WebMethod(operationName = "obtenerProveedorPorID")
+    public Proveedor obtenerProveedorPorID(int idProveedor){
+        ProveedorHelper ph = new ProveedorHelper();
+        return ph.obtenerProveedorPorID(idProveedor);        
+    }
+    
+    @WebMethod(operationName = "guardarProveedor")
+    public void guardarProveedor(Proveedor proveedor) {
+        ProveedorHelper ph = new ProveedorHelper();
+        Proveedor pro = new Proveedor();
+        ph.guardarProveedor(proveedor);        
     }
 }
