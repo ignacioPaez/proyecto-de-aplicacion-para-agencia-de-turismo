@@ -2,9 +2,9 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="Agencia_de_Turismo_DB"/>
-  <table-filter match-name="Proveedor"/>
   <table-filter match-name="Factura"/>
-  <table-filter match-name="LineaFactura"/>
-  <table-filter match-name="Cliente"/>
   <table-filter match-name="Servicio"/>
+  <table-filter match-name="LineaFactura"/>
+  <table-filter match-name="Proveedor"/>
+  <table-filter match-name="Cliente"/>
 </hibernate-reverse-engineering>

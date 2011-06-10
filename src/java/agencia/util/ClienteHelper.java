@@ -5,17 +5,15 @@
 package agencia.util;
 
 import agencia.entity.Cliente;
-import java.util.Iterator;
+import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import java.util.List;
 
 /**
  *
  * @author javier
  */
 public class ClienteHelper {
-    
     Session session = null;
     
     public ClienteHelper(){
@@ -31,6 +29,8 @@ public class ClienteHelper {
             logueado = (Cliente)q.uniqueResult();            
         }catch (Exception e){
             e.printStackTrace();
+        }finally{
+            session.close();
         }
         if(logueado!=null){
             respuesta = (logueado.getPass().equals(pass));
@@ -46,6 +46,8 @@ public class ClienteHelper {
             listaClientes = q.list();
         }catch(Exception e){
             e.printStackTrace();
+        }finally{
+            session.close();
         }
         return listaClientes;
     }
@@ -58,12 +60,10 @@ public class ClienteHelper {
         }catch(Exception e){
             e.printStackTrace();
             session.getTransaction().rollback();
-        }finally{
-            session.close();
         }
     }
     
-    public void eliminarCliente(int idCliente){
+    public void eliminarClientePorID(int idCliente){
         try{
             org.hibernate.Transaction tx = session.beginTransaction();
             Query q = session.createQuery("from Cliente cliente where cliente.idCliente='"+idCliente+"'");
@@ -71,20 +71,19 @@ public class ClienteHelper {
             session.getTransaction().commit();
         }catch(Exception e){
             e.printStackTrace();
-        }finally{
-            session.close();
         }
     }
     
-    public Cliente obtenerCliente(int idCliente){
-        Cliente cliente= null;
-        try{
-            org.hibernate.Transaction tx = session.getTransaction();
-            Query q = session.createQuery("from Cliente cliente where cliente.idCliente='"+idCliente+"'");
-            cliente = (Cliente) q.uniqueResult();
+        public Cliente obtenerClientePorID(int idCliente){
+            Cliente cli = null;
+            try{
+                org.hibernate.Transaction tx = session.beginTransaction();
+                Query q = session.createQuery("from Cliente cliente where cliente.idCliente='"+idCliente+"'");
+                cli = (Cliente) q.uniqueResult();                
         }catch(Exception e){
             e.printStackTrace();
         }
-        return cliente;
+            return cli;
     }
+    
 }
