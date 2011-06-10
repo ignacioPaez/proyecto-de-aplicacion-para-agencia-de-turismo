@@ -36,23 +36,18 @@ public class ClienteWS {
     public void guardarCliente(Cliente cliente) {
         ClienteHelper ch = new ClienteHelper();
         Cliente cli = new Cliente();
-        cli.setApellido("Mino");
-        cli.setNombre("Javier");
-        cli.setUsuario("javier");
-        cli.setPass("asd");
-        cli.setNacionalidad("Argentina");
         ch.guardarCliente(cliente);        
     }
     
-    @WebMethod(operationName = "eliminarCliente")
-    public void eliminarCliente(int idCliente){
+    @WebMethod(operationName = "eliminarClientePorID")
+    public void eliminarClientePorID(int idCliente){
         ClienteHelper ch = new ClienteHelper();
-        ch.eliminarCliente(idCliente);
+        ch.eliminarClientePorID(idCliente);
     }
     
-    @WebMethod(operationName = "obtenerCliente")
-    public Cliente obtenerCliente(int idCliente){
+    @WebMethod(operationName = "obtenerClientePorID")
+    public Cliente obtenerClientePorID(int idCliente){
         ClienteHelper ch = new ClienteHelper();
-        return ch.obtenerCliente(idCliente);        
+        return ch.obtenerClientePorID(idCliente);        
     }
 }

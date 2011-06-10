@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10/06/2011 10:34:35 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="agencia.entity.LineaFactura" table="LineaFactura" catalog="Agencia_de_Turismo_DB">
+        <composite-id name="id" class="agencia.entity.LineaFacturaId">
+            <key-property name="idLineaFactura" type="int">
+                <column name="idLineaFactura" />
+            </key-property>
+            <key-property name="facturaIdFactura" type="int">
+                <column name="Factura_idFactura" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="servicio" class="agencia.entity.Servicio" fetch="select">
+            <column name="Servicio_idServicio" not-null="true" />
+            <column name="Servicio_Proveedor_idProveedor" not-null="true" />
+        </many-to-one>
+        <many-to-one name="factura" class="agencia.entity.Factura" update="false" insert="false" fetch="select">
+            <column name="Factura_idFactura" not-null="true" />
+        </many-to-one>
+        <property name="precio" type="string">
+            <column name="precio" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

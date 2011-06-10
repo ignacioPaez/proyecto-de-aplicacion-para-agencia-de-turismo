@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10/06/2011 10:34:35 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="agencia.entity.Factura" table="Factura" catalog="Agencia_de_Turismo_DB">
+        <id name="idFactura" type="java.lang.Integer">
+            <column name="idFactura" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cliente" class="agencia.entity.Cliente" fetch="select">
+            <column name="Cliente_idCliente" not-null="true" />
+        </many-to-one>
+        <property name="fechaEmicion" type="string">
+            <column name="fechaEmicion" length="45" />
+        </property>
+        <set name="lineaFacturas" inverse="true">
+            <key>
+                <column name="Factura_idFactura" not-null="true" />
+            </key>
+            <one-to-many class="agencia.entity.LineaFactura" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 04/06/2011 18:38:36 by Hibernate Tools 3.2.1.GA -->
+<!-- Generated 10/06/2011 10:34:35 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="agencia.entity.Servicio" table="Servicio" catalog="Agencia_de_Turismo_DB">
         <composite-id name="id" class="agencia.entity.ServicioId">
@@ -18,11 +18,21 @@
         <property name="nombre" type="string">
             <column name="nombre" length="45" />
         </property>
-        <property name="precio" type="java.lang.Float">
-            <column name="precio" precision="12" scale="0" />
+        <property name="costo" type="java.lang.Float">
+            <column name="costo" precision="12" scale="0" />
         </property>
         <property name="disponibilidad" type="java.lang.Integer">
             <column name="disponibilidad" />
         </property>
+        <property name="comision" type="string">
+            <column name="comision" length="45" />
+        </property>
+        <set name="lineaFacturas" inverse="true">
+            <key>
+                <column name="Servicio_idServicio" not-null="true" />
+                <column name="Servicio_Proveedor_idProveedor" not-null="true" />
+            </key>
+            <one-to-many class="agencia.entity.LineaFactura" />
+        </set>
     </class>
 </hibernate-mapping>
