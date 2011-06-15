@@ -21,14 +21,16 @@ import java.util.List;
 public class ClienteWS {
 
     /** This is a sample web service operation */
-    
+    /*
     @WebMethod(operationName = "logCliente")
+    
     
     public Boolean logCliente(@WebParam(name = "user") String user,@WebParam(name = "pass") String pass) {
         ClienteHelper ch = new ClienteHelper();
         return ch.logCliente(user, pass);
     }
-    
+    */
+   //*
     @WebMethod(operationName = "listarClientes")
     public List<Cliente> listarClientes() {
         ClienteHelper ch = new ClienteHelper();
@@ -81,5 +83,15 @@ public class ClienteWS {
     String usuario, @WebParam(name = "pass")String pass) {
         //TODO write your implementation code here:
         return null;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "loCliente")
+    public int loCliente(@WebParam(name = "usuario")
+    String usuario) {
+        ClienteHelper ch = new ClienteHelper();
+       return ch.obtenerClientePorUsuario(usuario).getIdCliente();
     }
 }
