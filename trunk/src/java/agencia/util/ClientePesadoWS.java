@@ -18,7 +18,7 @@ public class ClientePesadoWS {
 
     /** This is a sample web service operation */
     @WebMethod(operationName = "listarProveedores")
-    public List<Proveedor> lsitarProveedores() {
+    public List<Proveedor> listarProveedores() {
         ProveedorHelper ph = new ProveedorHelper();
         return ph.listarProveedores();
     }
