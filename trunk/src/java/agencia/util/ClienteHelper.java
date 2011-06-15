@@ -90,14 +90,14 @@ public class ClienteHelper {
         public Cliente obtenerClientePorUsuario(String usuario){
             Cliente cli = new Cliente();
             try{
-                org.hibernate.Transaction tx = session.getTransaction();
+                org.hibernate.Transaction tx = session.beginTransaction();
                 Query q = session.createQuery("from Cliente cliente where cliente.usuario=:usuario");
                 q.setString(usuario, usuario);
                 cli = (Cliente) q.uniqueResult();
             }catch(Exception e){
                 e.printStackTrace();
             }finally{
-                session.close();                
+                session.close();
             }
             return cli;
         }
