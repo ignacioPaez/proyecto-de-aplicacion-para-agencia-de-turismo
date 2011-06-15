@@ -36,6 +36,24 @@
   <message name="obtenerClientePorIDResponse">
     <part name="parameters" element="tns:obtenerClientePorIDResponse"/>
   </message>
+  <message name="listarProveedores">
+    <part name="parameters" element="tns:listarProveedores"/>
+  </message>
+  <message name="listarProveedoresResponse">
+    <part name="parameters" element="tns:listarProveedoresResponse"/>
+  </message>
+  <message name="obtenerProveedorPorID">
+    <part name="parameters" element="tns:obtenerProveedorPorID"/>
+  </message>
+  <message name="obtenerProveedorPorIDResponse">
+    <part name="parameters" element="tns:obtenerProveedorPorIDResponse"/>
+  </message>
+  <message name="guardarProveedor">
+    <part name="parameters" element="tns:guardarProveedor"/>
+  </message>
+  <message name="guardarProveedorResponse">
+    <part name="parameters" element="tns:guardarProveedorResponse"/>
+  </message>
   <portType name="ClienteWS">
     <operation name="logCliente">
       <input wsam:Action="http://util.agencia/ClienteWS/logClienteRequest" message="tns:logCliente"/>
@@ -56,6 +74,18 @@
     <operation name="obtenerClientePorID">
       <input wsam:Action="http://util.agencia/ClienteWS/obtenerClientePorIDRequest" message="tns:obtenerClientePorID"/>
       <output wsam:Action="http://util.agencia/ClienteWS/obtenerClientePorIDResponse" message="tns:obtenerClientePorIDResponse"/>
+    </operation>
+    <operation name="listarProveedores">
+      <input wsam:Action="http://util.agencia/ClienteWS/listarProveedoresRequest" message="tns:listarProveedores"/>
+      <output wsam:Action="http://util.agencia/ClienteWS/listarProveedoresResponse" message="tns:listarProveedoresResponse"/>
+    </operation>
+    <operation name="obtenerProveedorPorID">
+      <input wsam:Action="http://util.agencia/ClienteWS/obtenerProveedorPorIDRequest" message="tns:obtenerProveedorPorID"/>
+      <output wsam:Action="http://util.agencia/ClienteWS/obtenerProveedorPorIDResponse" message="tns:obtenerProveedorPorIDResponse"/>
+    </operation>
+    <operation name="guardarProveedor">
+      <input wsam:Action="http://util.agencia/ClienteWS/guardarProveedorRequest" message="tns:guardarProveedor"/>
+      <output wsam:Action="http://util.agencia/ClienteWS/guardarProveedorResponse" message="tns:guardarProveedorResponse"/>
     </operation>
   </portType>
   <binding name="ClienteWSPortBinding" type="tns:ClienteWS">
@@ -97,6 +127,33 @@
       </output>
     </operation>
     <operation name="obtenerClientePorID">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="listarProveedores">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="obtenerProveedorPorID">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="guardarProveedor">
       <soap:operation soapAction=""/>
       <input>
         <soap:body use="literal"/>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 10/06/2011 10:34:35 by Hibernate Tools 3.2.1.GA -->
+<!-- Generated 14/06/2011 00:41:36 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="agencia.entity.Proveedor" table="Proveedor" catalog="Agencia_de_Turismo_DB">
         <id name="idProveedor" type="java.lang.Integer">

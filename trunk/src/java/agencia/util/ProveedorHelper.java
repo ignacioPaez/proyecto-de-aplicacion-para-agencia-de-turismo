@@ -21,12 +21,12 @@ public class ProveedorHelper {
         this.session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
        
-    public List<Proveedor> listarProveedor(){
+    public List<Proveedor> listarProveedores(){
         List<Proveedor> listaProveedores = null;
         try{
             org.hibernate.Transaction tx = session.beginTransaction();
             Query q = session.createQuery("from Proveedor");
-            listaProveedores = q.list();
+            listaProveedores = (List<Proveedor>) q.list();
         }catch(Exception e){
             e.printStackTrace();
         }finally{
@@ -69,4 +69,16 @@ public class ProveedorHelper {
             return cli;
     }
     
+        public Proveedor obtenerProveedorPorUsuario(String usuario){
+            Proveedor pro = null;
+            try{
+                org.hibernate.Transaction tx = session.beginTransaction();
+                Query q = session.createQuery("from Proveedor proveedor where proveedor.usuario=:usuario");
+                q.setString(usuario, usuario);
+                pro = (Proveedor) q.uniqueResult();                
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+            return pro;
+    }
 }

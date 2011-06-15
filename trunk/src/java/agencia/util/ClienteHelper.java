@@ -20,22 +20,24 @@ public class ClienteHelper {
         this.session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
     
-    public Boolean logCliente(String usuario, String pass){
+    public int logCliente(String usuario, String pass){
         Cliente logueado = new Cliente();
         Boolean respuesta = false;
+        int id = 9999;
         try{
             org.hibernate.Transaction tx = session.beginTransaction();
             Query q = session.createQuery("from Cliente cliente where cliente.usuario='"+usuario+"'");
-            logueado = (Cliente)q.uniqueResult();            
+            logueado = (Cliente)q.uniqueResult();
+            id = logueado.getIdCliente();
         }catch (Exception e){
             e.printStackTrace();
         }finally{
             session.close();
         }
-        if(logueado!=null){
-            respuesta = (logueado.getPass().equals(pass));
-        }       
-        return respuesta;
+        //if(logueado!=null){
+        //    respuesta = (logueado.getPass().equals(pass));
+        //}       
+        return id;
     }
     
     public List<Cliente> listarClientes(){
@@ -43,7 +45,7 @@ public class ClienteHelper {
         try{
             org.hibernate.Transaction tx = session.beginTransaction();
             Query q = session.createQuery("from Cliente");
-            listaClientes = q.list();
+            listaClientes = (List<Cliente>) q.list();
         }catch(Exception e){
             e.printStackTrace();
         }finally{
@@ -84,6 +86,20 @@ public class ClienteHelper {
             e.printStackTrace();
         }
             return cli;
-    }
+        }
+        public Cliente obtenerClientePorUsuario(String usuario){
+            Cliente cli = new Cliente();
+            try{
+                org.hibernate.Transaction tx = session.getTransaction();
+                Query q = session.createQuery("from Cliente cliente where cliente.usuario=:usuario");
+                q.setString(usuario, usuario);
+                cli = (Cliente) q.uniqueResult();
+            }catch(Exception e){
+                e.printStackTrace();
+            }finally{
+                session.close();                
+            }
+            return cli;
+        }
     
 }
