@@ -4,7 +4,7 @@
  */
 package agencia.util;
 
-import agencia.entity.Cliente;
+import agencia.entity.Proveedor;
 import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -17,9 +17,21 @@ import javax.jws.WebMethod;
 public class ClientePesadoWS {
 
     /** This is a sample web service operation */
-    @WebMethod(operationName = "litarClientes")
-    public List<Cliente> lsitarClientes() {
-        ClienteHelper ch = new ClienteHelper();
-        return ch.listarClientes();
+    @WebMethod(operationName = "listarProveedores")
+    public List<Proveedor> lsitarProveedores() {
+        ProveedorHelper ph = new ProveedorHelper();
+        return ph.listarProveedores();
+    }
+    
+    @WebMethod(operationName= "guardarProveedor")
+    public void guardarProveedor(Proveedor pro){
+        ProveedorHelper ph = new ProveedorHelper();
+        ph.guardarProveedor(pro);        
+    }
+    
+    @WebMethod(operationName="loguearProveedor")
+    public Boolean loguearProveedor(String usuario, String pass){
+        ProveedorHelper ph = new ProveedorHelper();
+        return ph.obtenerProveedorPorUsuario(usuario).getPass()==pass;
     }
 }

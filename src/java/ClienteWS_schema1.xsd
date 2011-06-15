@@ -1,36 +1,125 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema version="1.0" targetNamespace="http://util.agencia/" xmlns:tns="http://util.agencia/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-  <xs:element name="eliminarClientePorID" type="tns:eliminarClientePorID"/>
+  <xs:element name="eliminarClientePorID" nillable="true" type="tns:eliminarClientePorID"/>
 
-  <xs:element name="eliminarClientePorIDResponse" type="tns:eliminarClientePorIDResponse"/>
+  <xs:element name="eliminarClientePorIDResponse" nillable="true" type="tns:eliminarClientePorIDResponse"/>
 
-  <xs:element name="guardarCliente" type="tns:guardarCliente"/>
+  <xs:element name="guardarCliente" nillable="true" type="tns:guardarCliente"/>
 
-  <xs:element name="guardarClienteResponse" type="tns:guardarClienteResponse"/>
+  <xs:element name="guardarClienteResponse" nillable="true" type="tns:guardarClienteResponse"/>
 
-  <xs:element name="listarClientes" type="tns:listarClientes"/>
+  <xs:element name="guardarProveedor" nillable="true" type="tns:guardarProveedor"/>
 
-  <xs:element name="listarClientesResponse" type="tns:listarClientesResponse"/>
+  <xs:element name="guardarProveedorResponse" nillable="true" type="tns:guardarProveedorResponse"/>
 
-  <xs:element name="logCliente" type="tns:logCliente"/>
+  <xs:element name="listarClientes" nillable="true" type="tns:listarClientes"/>
 
-  <xs:element name="logClienteResponse" type="tns:logClienteResponse"/>
+  <xs:element name="listarClientesResponse" nillable="true" type="tns:listarClientesResponse"/>
 
-  <xs:element name="obtenerClientePorID" type="tns:obtenerClientePorID"/>
+  <xs:element name="listarProveedores" nillable="true" type="tns:listarProveedores"/>
 
-  <xs:element name="obtenerClientePorIDResponse" type="tns:obtenerClientePorIDResponse"/>
+  <xs:element name="listarProveedoresResponse" nillable="true" type="tns:listarProveedoresResponse"/>
+
+  <xs:element name="logCliente" nillable="true" type="tns:logCliente"/>
+
+  <xs:element name="logClienteResponse" nillable="true" type="tns:logClienteResponse"/>
+
+  <xs:element name="obtenerClientePorID" nillable="true" type="tns:obtenerClientePorID"/>
+
+  <xs:element name="obtenerClientePorIDResponse" nillable="true" type="tns:obtenerClientePorIDResponse"/>
+
+  <xs:element name="obtenerProveedorPorID" nillable="true" type="tns:obtenerProveedorPorID"/>
+
+  <xs:element name="obtenerProveedorPorIDResponse" nillable="true" type="tns:obtenerProveedorPorIDResponse"/>
+
+  <xs:complexType name="guardarProveedor">
+    <xs:sequence>
+      <xs:element name="arg0" type="tns:proveedor" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="proveedor">
+    <xs:sequence>
+      <xs:element name="idProveedor" type="xs:int" minOccurs="0"/>
+      <xs:element name="pass" type="xs:string" minOccurs="0"/>
+      <xs:element name="razonSocial" type="xs:string" minOccurs="0"/>
+      <xs:element name="servicios" type="tns:servicio" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="usuario" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="servicio">
+    <xs:sequence>
+      <xs:element name="comision" type="xs:string" minOccurs="0"/>
+      <xs:element name="costo" type="xs:float" minOccurs="0"/>
+      <xs:element name="disponibilidad" type="xs:int" minOccurs="0"/>
+      <xs:element name="id" type="tns:servicioId" minOccurs="0"/>
+      <xs:element name="lineaFacturas" type="tns:lineaFactura" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="proveedor" type="tns:proveedor" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="servicioId">
+    <xs:sequence>
+      <xs:element name="idServicio" type="xs:int"/>
+      <xs:element name="proveedorIdProveedor" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="lineaFactura">
+    <xs:sequence>
+      <xs:element name="factura" type="tns:factura" minOccurs="0"/>
+      <xs:element name="id" type="tns:lineaFacturaId" minOccurs="0"/>
+      <xs:element name="precio" type="xs:string" minOccurs="0"/>
+      <xs:element name="servicio" type="tns:servicio" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="factura">
+    <xs:sequence>
+      <xs:element name="cliente" type="tns:cliente" minOccurs="0"/>
+      <xs:element name="fechaEmicion" type="xs:string" minOccurs="0"/>
+      <xs:element name="idFactura" type="xs:int" minOccurs="0"/>
+      <xs:element name="lineaFacturas" type="tns:lineaFactura" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cliente">
+    <xs:sequence>
+      <xs:element name="apellido" type="xs:string" minOccurs="0"/>
+      <xs:element name="facturas" type="tns:factura" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="fechaNacimiento" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="idCliente" type="xs:int" minOccurs="0"/>
+      <xs:element name="nacionalidad" type="xs:string" minOccurs="0"/>
+      <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="pass" type="xs:string" minOccurs="0"/>
+      <xs:element name="usuario" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="lineaFacturaId">
+    <xs:sequence>
+      <xs:element name="facturaIdFactura" type="xs:int"/>
+      <xs:element name="idLineaFactura" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="guardarProveedorResponse">
+    <xs:sequence/>
+  </xs:complexType>
 
   <xs:complexType name="logCliente">
     <xs:sequence>
-      <xs:element name="user" type="xs:string" minOccurs="0"/>
       <xs:element name="pass" type="xs:string" minOccurs="0"/>
+      <xs:element name="user" type="xs:string" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="logClienteResponse">
     <xs:sequence>
-      <xs:element name="return" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="return" type="xs:int"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -40,19 +129,7 @@
 
   <xs:complexType name="listarClientesResponse">
     <xs:sequence>
-      <xs:element name="return" type="tns:cliente" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="cliente">
-    <xs:sequence>
-      <xs:element name="apellido" type="xs:string" minOccurs="0"/>
-      <xs:element name="fechaNacimiento" type="xs:dateTime" minOccurs="0"/>
-      <xs:element name="idCliente" type="xs:int"/>
-      <xs:element name="nacionalidad" type="xs:string" minOccurs="0"/>
-      <xs:element name="nombre" type="xs:string" minOccurs="0"/>
-      <xs:element name="pass" type="xs:string" minOccurs="0"/>
-      <xs:element name="usuario" type="xs:string" minOccurs="0"/>
+      <xs:element name="return" type="tns:cliente" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -66,6 +143,16 @@
     <xs:sequence/>
   </xs:complexType>
 
+  <xs:complexType name="listarProveedores">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="listarProveedoresResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:proveedor" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="guardarCliente">
     <xs:sequence>
       <xs:element name="arg0" type="tns:cliente" minOccurs="0"/>
@@ -74,6 +161,18 @@
 
   <xs:complexType name="guardarClienteResponse">
     <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerProveedorPorID">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerProveedorPorIDResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:proveedor" minOccurs="0"/>
+    </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="obtenerClientePorID">
