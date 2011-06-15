@@ -101,5 +101,16 @@ public class ClienteHelper {
             }
             return cli;
         }
-    
+       public Cliente obtenerNombrePorID ( int idCliente) {
+         Cliente nom = null;
+         try {            
+            org.hibernate.Transaction tx = session.beginTransaction();
+            Query q = session.createQuery ("from Cliente as cliente where cliente.id='"+idCliente+"'" );
+            nom = (Cliente) q.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return nom;
+       
+       }
 }
