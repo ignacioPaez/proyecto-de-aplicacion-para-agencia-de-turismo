@@ -7,6 +7,9 @@
     <service name="ClientePesadoWS">
       <implementation-class>agencia.util.ClientePesadoWS</implementation-class>
     </service>
+    <service name="ClienteLiviano">
+      <implementation-class>agencia.util.ClienteLiviano</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>
