@@ -25,7 +25,7 @@ public class FacturaHelper {
         try{
             org.hibernate.Transaction tx = session.beginTransaction();
             Query q = session.createQuery("from Factura");
-            listaFacturas = q.list();
+            listaFacturas = (List<Factura>)  q.list();
         }catch(Exception e){
             e.printStackTrace();
         }finally{
@@ -67,5 +67,20 @@ public class FacturaHelper {
         }
             return cli;
     }
-    
+        /*
+         * esta mal definida el tipo de datos con el que trabaja idcliente aca
+         */
+  public List<Factura>  obtenerFacturaPorIDCliente ( int idCliente){
+      List<Factura> listaFac = null;
+        try{
+            org.hibernate.Transaction tx = session.beginTransaction();
+            Query q = session.createQuery("from Factura fac where fac.idcliente=: idCliente ");
+            listaFac = listaFac = (List<Factura>) q.list();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            session.close();
+        }
+        return listaFac;
+    }      
 }
