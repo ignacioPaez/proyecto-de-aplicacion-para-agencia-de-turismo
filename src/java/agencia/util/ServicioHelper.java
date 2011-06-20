@@ -25,7 +25,7 @@ public class ServicioHelper {
         try{
             org.hibernate.Transaction tx = session.beginTransaction();
             Query q = session.createQuery("from Servicio");
-            listaServicios = q.list();
+            listaServicios = (List<Servicio>) q.list();
         }catch(Exception e){
             e.printStackTrace();
         }finally{
@@ -66,5 +66,19 @@ public class ServicioHelper {
             e.printStackTrace();
         }
             return cli;
+
+      }
+        public List<Servicio> listarServicioIDProveedor(int idServicio){
+        List<Servicio> listaServicios = null;
+        try{
+            org.hibernate.Transaction tx = session.beginTransaction();
+            Query q = session.createQuery("from Servicio as ser where ser.idServicio='"+idServicio+"'");
+            listaServicios = (List<Servicio>) q.list();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            session.close();
+        }
+        return listaServicios;
     }
 }

@@ -25,7 +25,7 @@ public class LineaFacturaHelper {
         try{
             org.hibernate.Transaction tx = session.beginTransaction();
             Query q = session.createQuery("from LineaFactura");
-            listaLineasFactura = q.list();
+            listaLineasFactura = (List<LineaFactura>) q.list();
         }catch(Exception e){
             e.printStackTrace();
         }finally{

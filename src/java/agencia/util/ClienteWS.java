@@ -85,7 +85,7 @@ public class ClienteWS {
     /**
      * Web service operation
      */
-    @WebMethod(operationName = "loCliente")
+    @WebMethod(operationName = "logCliente")
     public int loCliente(@WebParam(name = "usuario")
     String usuario) {
         ClienteHelper ch = new ClienteHelper();
