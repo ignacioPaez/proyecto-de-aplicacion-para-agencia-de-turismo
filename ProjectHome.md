@@ -1,0 +1,1 @@
+La finalidad del proyecto es generar una aplicación que funcione como una agencia de turismo implementando una arquitectura de cliente-servidor, para la materia de Cliente-Servidor de la carrera de Ingeniería en Sistemas de la UTN FRRE.
